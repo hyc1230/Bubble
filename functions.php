@@ -1,6 +1,77 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 function themeConfig($form) {
+	?>
+	<form class="protected" action="?bubble_backup" method="post" id="themeBackup">
+        <input type="submit" name="backup" class="btn btn-s" value="备份主题数据" />&nbsp;&nbsp;<input type="submit" name="backup"
+            class="btn btn-s" value="还原主题数据" />&nbsp;&nbsp;<input type="submit" name="backup" class="btn btn-s"
+            value="删除备份数据" />
+    </form>
+	<?php
+	$db = Typecho_Db::get();
+    $sjdq = $db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Bubble'));
+    $ysj = $sjdq['value'];
+    if (isset($_POST['backup'])) {
+        if ($_POST['backup'] == '备份主题数据') {
+            if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Bubble_backup'))) {
+                $update = $db->update('table.options')->rows(array('value' => $ysj))->where('name = ?', 'theme:Bubble_backup');
+                $updateRows = $db->query($update);
+                echo '<div class="tongzhi">备份已更新，请等待自动刷新！如果等不到请点击';
+                ?>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+                <script
+                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                <?php
+            } else {
+                if ($ysj) {
+                    $insert = $db->insert('table.options')->rows(array('name' => 'theme:Bubble_backup', 'user' => '0', 'value' => $ysj));
+                    $insertId = $db->query($insert);
+                    echo '<div class="tongzhi">备份完成，请等待自动刷新！如果等不到请点击';
+                    ?>
+                    <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+                    <script
+                        language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                    <?php
+                }
+            }
+        }
+        if ($_POST['backup'] == '还原主题数据') {
+            if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Bubble_backup'))) {
+                $sjdub = $db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Bubble_backup'));
+                $bsj = $sjdub['value'];
+                $update = $db->update('table.options')->rows(array('value' => $bsj))->where('name = ?', 'theme:Bubble');
+                $updateRows = $db->query($update);
+                echo '<div class="tongzhi">备份恢复完成，请等待自动刷新！如果等不到请点击';
+                ?>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+                <script
+                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2000);</script>
+                <?php
+            } else {
+                echo '<div class="tongzhi">没有主题备份数据，恢复不了哦！</div>';
+            }
+        }
+        if ($_POST['backup'] == '删除备份数据') {
+            if ($db->fetchRow($db->select()->from('table.options')->where('name = ?', 'theme:Bubble_backup'))) {
+                $delete = $db->delete('table.options')->where('name = ?', 'theme:Bubble_backup');
+                $deletedRows = $db->query($delete);
+                echo '<div class="tongzhi">删除成功，请等待自动刷新，如果等不到请点击';
+                ?>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+                <script
+                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                <?php
+            } else {
+                echo '<div class="tongzhi">备份不存在，请等待自动刷新，如果等不到请点击</div>';
+                ?>
+                <a href="<?php Helper::options()->adminUrl('options-theme.php'); ?>">这里</a></div>
+                <script
+                    language="JavaScript">window.setTimeout("location=\'<?php Helper::options()->adminUrl('options-theme.php'); ?>\'", 2500);</script>
+                <?php
+            }
+        }
+    }
+
 	Typecho_Widget::widget('Widget_Themes_List')->to($themes);
 	foreach ($themes -> stack as $key => $value){
 		if($value["activated"]==1){
