@@ -1,6 +1,7 @@
 本仓库为修改版，增加如下功能：
 
 - 设置备份（代码修改自 wehaox/Typecho-Butterfly）
+- 自定义 CDN 地址
 
 原仓库：trinitrotofu/Bubble，感谢原作者的贡献。
 

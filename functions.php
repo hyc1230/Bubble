@@ -191,8 +191,9 @@ function themeConfig($form) {
 		fclose($updater);
 	}
 	
-	echo '<script>
-		var version = "' . $value["version"] . '"
+	?>
+	<script>
+		var version = "<?php echo $value["version"]; ?>"
 		function toNum(a){
 			var a=a.toString();
 			var c=a.split('.');
@@ -205,11 +206,8 @@ function themeConfig($form) {
 			return res; 
 		} 
 		
-	</script>';
-	
-	echo 
-	'
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+	</script>
+	<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.min.js"></script>
 	<ul class="typecho-option typecho-option-submit">
 		<li>
 			<label class="typecho-label">
@@ -247,7 +245,8 @@ function themeConfig($form) {
 			$("#update-dec").html("检查更新程序出错！")
 		}
 	});
-	</script>';
+	</script>
+	<?php
 
 	$subtitle = new Typecho_Widget_Helper_Form_Element_Text('subtitle', NULL, '', _t('站点副标题'), _t('在这里填入站点副标题，以在网站标题后显示'));
 	$form->addInput($subtitle);
@@ -416,6 +415,9 @@ function themeConfig($form) {
 	<p class="description">编辑在顶部显示的链接';
 	$headerLinks = new Typecho_Widget_Helper_Form_Element_Text('headerLinks', NULL, '', _t('顶部跳转链接'), $header_links_html);
 	$form->addInput($headerLinks);
+
+	$static_cdn = new Typecho_Widget_Helper_Form_Element_Text('static_cdn', NULL, 'https://cdn.jsdelivr.net', _t('自定义静态文件 CDN'), _t('自定义 CDN 加载静态文件的 URL。<br>该 URL 在子目录 <code>npm</code> 下需包含 NPM 包：<code>popper.js@1.16.0 bootstrap@4.4.1 headroom.js@0.11.0 jquery-pjax@2.0.1 katex@0.11.1 prismjs@1.20.0 jquery@3.4.1 font-awesome@4.7.0 viewerjs@1.11.0</code>；<br>在子目录 <code>gh</code> 下需包含 GitHub 仓库包：<code>fengyuanchen/jquery-viewer blueimp/JavaScript-MD5 dkern/jquery.lazy</code>。<br><b>请不要在末尾添加斜杠！</b>'));
+	$form->addInput($static_cdn);
 }
 
 function printCategory($that, $icon = 0) { ?>

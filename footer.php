@@ -87,10 +87,10 @@
 		</button>
 	</a>
 	<!-- Core -->
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
 	<!-- Optional plugins -->
-	<script src="https://cdn.jsdelivr.net/npm/headroom.js@0.11.0/dist/headroom.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/headroom.js@0.11.0/dist/headroom.min.js"></script>
 	<!-- Theme JS -->
 	<script src="<?php $this->options->themeUrl("assets/js/argon.min.js"); ?>"></script>
 	<script src="<?php $this->options->themeUrl("assets/js/bbrender.js"); ?>"></script>
@@ -200,7 +200,7 @@
 			<?php endif; ?>
 	</script>
 	<?php if($this->options->Pjax): ?>
-	<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/jquery-pjax@2.0.1/jquery.pjax.js"></script>
 	<script src="<?php $this->options->themeUrl("assets/js/progress.js"); ?>"></script>
 	<script>
 		var pgid = 0
@@ -238,18 +238,18 @@
 	<?php endif; ?>
 	<!-- KaTeX JS -->
 	<?php if($this->options->katex): ?>
-	<script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/katex@0.11.1/dist/katex.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
 	<?php endif; ?>
 	<!-- Prism JS -->
 	<?php if($this->options->prismjs): ?>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/components/prism-core.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/toolbar/prism-toolbar.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/show-language/prism-show-language.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/components/prism-core.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/toolbar/prism-toolbar.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/show-language/prism-show-language.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
 	<?php if($this->options->prismLine): ?>
-		<script src="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+		<script src="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 	<?php endif; ?>
 	<?php endif; ?>
 	<!-- Alert -->

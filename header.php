@@ -35,32 +35,32 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 	<!-- FontAwesome -->
-	<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo $this->options->static_cdn; ?>/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Main CSS -->
 	<link type="text/css" href="<?php $this->options->themeUrl("assets/css/main.min.css"); ?>" rel="stylesheet">
 
 	<!-- KaTeX CSS -->
 	<?php if ($this->options->katex): ?>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->options->static_cdn; ?>/npm/katex@0.11.1/dist/katex.min.css">
 	<?php endif; ?>
 
 	<!-- PrismJS CSS -->
 	<?php if ($this->options->prismjs): ?>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/themes/<?php $this->options->prismTheme(); ?>.css" />
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/toolbar/prism-toolbar.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/themes/<?php $this->options->prismTheme(); ?>.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/toolbar/prism-toolbar.css" />
 		<?php if ($this->options->prismLine): ?>
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/prismjs@1.20.0/plugins/line-numbers/prism-line-numbers.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->options->static_cdn; ?>/npm/prismjs@1.20.0/plugins/line-numbers/prism-line-numbers.css" />
 		<?php endif; ?>
 	<?php endif; ?>
 
 	<!-- Viewer CSS -->
 	<?php if ($this->options->viewerEnable): ?>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/viewerjs/dist/viewer.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->options->static_cdn; ?>/npm/viewerjs@1.11.0/dist/viewer.min.css" />
 	<?php endif; ?>
 
 	<!-- Jquery -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 	<!-- Custom CSS -->
 	<?php if ($this->options->customCss): ?>
@@ -69,15 +69,15 @@
 
 	<!-- Viewer.js Plugin -->
 	<?php if ($this->options->viewerEnable): ?>
-	<script src="https://cdn.jsdelivr.net/npm/viewerjs/dist/viewer.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/fengyuanchen/jquery-viewer@master/dist/jquery-viewer.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/npm/viewerjs@1.11.0/dist/viewer.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/gh/fengyuanchen/jquery-viewer/dist/jquery-viewer.min.js"></script>
 	<?php endif; ?>
 
 	<!-- MD5 Js -->
-	<script src="https://cdn.jsdelivr.net/gh/blueimp/JavaScript-MD5/js/md5.min.js"></script>
+	<script src="<?php echo $this->options->static_cdn; ?>/gh/blueimp/JavaScript-MD5/js/md5.min.js"></script>
 	<!-- LazyLoad Js -->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dkern/jquery.lazy/jquery.lazy.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/dkern/jquery.lazy/jquery.lazy.plugins.min.js"></script>
+	<script type="text/javascript" src="<?php echo $this->options->static_cdn; ?>/gh/dkern/jquery.lazy/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->options->static_cdn; ?>/gh/dkern/jquery.lazy/jquery.lazy.plugins.min.js"></script>
 	<!-- Typecho header -->
 	<?php if($this->options->Pjax=="1"): ?>
 		<?php $this->header('commentReply=&antiSpam='); ?>
