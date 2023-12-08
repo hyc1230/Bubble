@@ -2,6 +2,7 @@
 
 - 设置备份（代码修改自 wehaox/Typecho-Butterfly）
 - 自定义 CDN 地址
+- 使用 Links 插件构建的友链页面模板
 
 原仓库：trinitrotofu/Bubble，感谢原作者的贡献。
 
