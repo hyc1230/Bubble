@@ -84,6 +84,7 @@
 	<?php else: ?>
 		<?php $this->header('commentReply='); ?>
 	<?php endif; ?>
+	<?php echo $this->options->head_html; ?>
 </head>
 <body>
 	<header class="header-global">

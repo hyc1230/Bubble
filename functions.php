@@ -418,6 +418,10 @@ function themeConfig($form) {
 
 	$static_cdn = new Typecho_Widget_Helper_Form_Element_Text('static_cdn', NULL, 'https://cdn.jsdelivr.net', _t('自定义静态文件 CDN'), _t('自定义 CDN 加载静态文件的 URL。<br>该 URL 在子目录 <code>npm</code> 下需包含 NPM 包：<code>popper.js@1.16.0 bootstrap@4.4.1 headroom.js@0.11.0 jquery-pjax@2.0.1 katex@0.11.1 prismjs@1.20.0 jquery@3.4.1 font-awesome@4.7.0 viewerjs@1.11.0</code>；<br>在子目录 <code>gh</code> 下需包含 GitHub 仓库包：<code>fengyuanchen/jquery-viewer blueimp/JavaScript-MD5 dkern/jquery.lazy</code>。<br><b>请不要在末尾添加斜杠！</b>'));
 	$form->addInput($static_cdn);
+	$head_html = new Typecho_Widget_Helper_Form_Element_Textarea('head_html', NULL, '', _t('head 标签末尾内容'), _t('位于 HTML <code>&lt;head&gt;</code> 标签末尾的内容'));
+	$form->addInput($head_html);
+	$body_html = new Typecho_Widget_Helper_Form_Element_Textarea('body_html', NULL, '', _t('body 标签末尾内容'), _t('位于 HTML <code>&lt;body&gt;</code> 标签末尾的内容'));
+	$form->addInput($body_html);
 }
 
 function printCategory($that, $icon = 0) { ?>

@@ -277,5 +277,6 @@
 	</script>
 	<!-- Typecho footer -->
 	<?php $this->footer(); ?>
+	<?php echo $this->options->body_html; ?>
 	</body>
 </html>
