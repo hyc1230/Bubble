@@ -234,7 +234,7 @@ function themeConfig($form) {
 			$("#update-btn-li").show()
 			$("#update-dec").html("")
 
-			$("#update-btn").html("最新版本号为" + releaseVersion + "，当前版本为" + version + "，" + (toNum(releaseVersion) > toNum(version) ? "你正在使用旧版本主题。点击更新" : "你已更新至最新版本"));
+			$("#update-btn").html("最新版本号为 " + releaseVersion + "，当前版本为 " + version + "，" + (toNum(releaseVersion) > toNum(version) ? "你正在使用旧版本主题。点击更新" : "你已更新至最新版本"));
 			if (toNum(releaseVersion) > toNum(version)) {
 				$("#update-btn").click(function() {
 					window.location.href = "themeupdater.php"
@@ -268,7 +268,7 @@ function themeConfig($form) {
 	$form->addInput($customCss);
 	$viewerEnable = new Typecho_Widget_Helper_Form_Element_Radio('viewerEnable', array('0' => _t('关闭'), '1' => _t('打开'),), '1', _t('开启 viewer.js 图片查看器（点击放大）'), _t('选择是否启用 viewer.js 图片查看器'));
 	$form->addInput($viewerEnable);
-	$Pjax = new Typecho_Widget_Helper_Form_Element_Radio('Pjax', array('0' => _t('关闭'), '1' => _t('打开')), '1', _t('开启全站 pjax 模式'), _t('选择是否启用全站 pjax 模式提升用户访问体验。注意：启用该项可能带来页面加载问题，请仔细阅读主题说明文档。'));
+	$Pjax = new Typecho_Widget_Helper_Form_Element_Radio('Pjax', array('0' => _t('关闭'), '1' => _t('打开')), '1', _t('开启全站 pjax 模式'), _t('选择是否启用全站 pjax 模式提升用户访问体验。注意：启用该项可能带来页面加载问题，请仔细阅读主题说明文档'));
 	$form->addInput($Pjax);
 	$pjaxcomp = new Typecho_Widget_Helper_Form_Element_Textarea('pjaxcomp', NULL, '', _t('pjax 回调代码'), _t('在这里填入 pjax 渲染完毕后需执行的 JS 代码，具体使用方法请仔细阅读主题说明文档'));
 	$form->addInput($pjaxcomp);
@@ -303,16 +303,16 @@ function themeConfig($form) {
 		'0', _t('默认 TOC 目录展开状态'), _t('选择打开文章时 TOC 目录的展开状态'));
 	$form->addInput($toc_enable);
 	$comment_indent_style = new Typecho_Widget_Helper_Form_Element_Radio('comment_indent_style',
-		array('native' => _t('Typecho风格'),
-			'bubble' => _t('Bubble风格'),
+		array('native' => _t('Typecho 风格'),
+			'bubble' => _t('Bubble 风格'),
 		),
-		'bubble', _t('评论缩进风格'), _t('选择评论缩进的风格，Typecho风格会为每一层回复进行缩进，Bubble风格会在需要的时候合并评论到同一层里，方便阅读'));
+		'bubble', _t('评论缩进风格'), _t('选择评论缩进的风格，Typecho 风格会为每一层回复进行缩进，Bubble 风格会在需要的时候合并评论到同一层里，方便阅读'));
 	$form->addInput($comment_indent_style);
 	$comment_object_nick = new Typecho_Widget_Helper_Form_Element_Radio('comment_object_nick',
 		array('0' => _t('不显示'),
 			'1' => _t('显示'),
 		),
-		'1', _t('被回复人的昵称显示'), _t('选择是否显示被回复人的昵称，显示"aa 回复 bb"，或者只显示"aa"'));
+		'1', _t('被回复人的昵称显示'), _t('选择是否显示被回复人的昵称，显示 "aa 回复 bb"，或者只显示 "aa"'));
 	$form->addInput($comment_object_nick);
 
 	$header_links_html = '

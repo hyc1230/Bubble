@@ -12,9 +12,9 @@
 						<h1 class="text-white">
 							<?php $this->archiveTitle(array(
 								'category'=>_t('%s'),
-								'search'=>_t('%s的搜索结果'),
+								'search'=>_t('%s 的搜索结果'),
 								'tag' =>_t('%s'),
-								'author'=>_t('%s的文章')
+								'author'=>_t('%s 的文章')
 								), '');
 							?>
 						</h1>

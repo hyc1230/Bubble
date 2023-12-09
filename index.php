@@ -3,9 +3,9 @@
  * Typecho 极简风格响应式主题
  * 
  * @package Bubble
- * @author TriNitroTofu, Rorical, Boshi
+ * @author TriNitroTofu, Rorical, Boshi, hycqwq
  * @version 4.0.2
- * @link https://github.com/trinitrotofu/Bubble
+ * @link https://github.com/hyc1230/Bubble
  */
 
 	if (!defined('__TYPECHO_ROOT_DIR__')) exit;
