@@ -422,6 +422,8 @@ function themeConfig($form) {
 	$form->addInput($head_html);
 	$body_html = new Typecho_Widget_Helper_Form_Element_Textarea('body_html', NULL, '', _t('body 标签末尾内容'), _t('位于 HTML <code>&lt;body&gt;</code> 标签末尾的内容'));
 	$form->addInput($body_html);
+	$gravatar_url = new Typecho_Widget_Helper_Form_Element_Text('gravatar_url', NULL, '', _t('Gravatar 镜像地址'), _t('自定义 Gravatar 加载头像的 URL，如 <code>https://gravatar.loli.net/avatar/</code>'));
+	$form->addInput($gravatar_url);
 }
 
 function printCategory($that, $icon = 0) { ?>

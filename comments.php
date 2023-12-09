@@ -1,5 +1,13 @@
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
-<?php function threadedComments($comments, $options) {
+<?php 
+$gravatar_url = 'https://secure.gravatar.com/avatar/';
+if (!empty($this->options->gravatar_url)) {
+	define("__TYPECHO_GRAVATAR_PREFIX__", $this->options->gravatar_url);
+	$gravatar_url = $this->options->gravatar_url;
+}
+
+function threadedComments($comments, $options) {
 		$commentLevelClass = $comments->_levels > 0 ? ' comment-child' : ' comment-parent';
 
 		$commentLine = [];
@@ -7,50 +15,47 @@
 		$parentAuthor = count($commentLine) >= 2? $commentLine[1]['author']:NULL;
 		$isTopLevel = count($commentLine) == 1;
 		$objectNick = Helper::options()->comment_object_nick!=='0';
-?>
-
-<li id="li-<?php $comments->theId(); ?>" class="<?php echo($indent? 'comment-child-indent':''); ?>">
-	<div id="<?php $comments->theId(); ?>">
-		<div  class="comment-item">
-			<div class="<?php 
-				if ($comments->_levels > 0) {
-						echo 'comment-child';
-				} else {
-						echo 'comment-parent';
-				}
-			?>">
-				<?php $comments->gravatar(80, ''); ?>
-			</div>
-			<div class="comment-body">
-				<div class="comment-head">
-					<h5><?php if ($comments->url) { ?><a target="_blank" rel="external nofollow" href="<?php echo $comments->url; ?>"><?php echo $comments->author; ?></a><?php } else { ?><?php echo $comments->author; ?><?php } ?><?php echo((!$isTopLevel && $objectNick)?(' <small>回复</small> ' . $parentAuthor):''); ?> · <small><?php $comments->date('Y-m-d H:i'); ?></small><?php
-					if ($comments->status == 'waiting') {
-						?><span class="badge badge-pill badge-default text-white">评论审核ing...</span><?php
-					}
-					if ($comments->authorId) {
-						if ($comments->authorId == $comments->ownerId) {
-							_e(' <span class="badge badge-pill badge-primary"><i class="fa fa-user-o" aria-hidden="true"></i> 作者</span>');
+		?>
+		<li id="li-<?php $comments->theId(); ?>" class="<?php echo($indent? 'comment-child-indent':''); ?>">
+			<div id="<?php $comments->theId(); ?>">
+				<div  class="comment-item">
+					<div class="<?php 
+						if ($comments->_levels > 0) {
+								echo 'comment-child';
+						} else {
+								echo 'comment-parent';
 						}
-					}
-					?></h5>
-				</div>
-				<?php $comments->content(); ?>
-				<div style="float: right;">
-					<?php $comments->reply('<i class="fa fa-reply" aria-hidden="true"></i> 回复'); ?>
+					?>">
+						<?php $comments->gravatar(80, ''); ?>
+					</div>
+					<div class="comment-body">
+						<div class="comment-head">
+							<h5><?php if ($comments->url) { ?><a target="_blank" rel="external nofollow" href="<?php echo $comments->url; ?>"><?php echo $comments->author; ?></a><?php } else { ?><?php echo $comments->author; ?><?php } ?><?php echo((!$isTopLevel && $objectNick)?(' <small>回复</small> ' . $parentAuthor):''); ?> · <small><?php $comments->date('Y-m-d H:i'); ?></small><?php
+							if ($comments->status == 'waiting') {
+								?><span class="badge badge-pill badge-default text-white">评论审核ing...</span><?php
+							}
+							if ($comments->authorId) {
+								if ($comments->authorId == $comments->ownerId) {
+									_e(' <span class="badge badge-pill badge-primary"><i class="fa fa-user-o" aria-hidden="true"></i> 作者</span>');
+								}
+							}
+							?></h5>
+						</div>
+						<?php $comments->content(); ?>
+						<div style="float: right;">
+							<?php $comments->reply('<i class="fa fa-reply" aria-hidden="true"></i> 回复'); ?>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<?php if ($comments->children) { ?>
-	<div class="comment-children">
-		<?php $comments->threadedComments($options); ?>
-	</div>
-	<?php } ?>
-</li>
- 
+			<?php if ($comments->children) { ?>
+			<div class="comment-children">
+				<?php $comments->threadedComments($options); ?>
+			</div>
+			<?php } ?>
+		</li>
 <?php } ?>
 
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <section class="section">
 	<div class="container" id="comments">
 		<div class="content">
@@ -82,7 +87,7 @@
 									<div class="input-group mb-4">
 										<div class="input-group-prepend">
 											<span class="input-group-text" style="padding: 0rem .5rem;">
-            									<div id="author-head" class="icon-shape rounded-circle text-white" style="width: 2rem;height: 2rem;background-image: url(https://secure.gravatar.com/avatar/);background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
+            									<div id="author-head" class="icon-shape rounded-circle text-white" style="width: 2rem;height: 2rem;background-image: url(<?php echo $gravatar_url; ?>);background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
             								</span>
 										</div>
 										<input type="text" name="author" id="author" class="form-control" placeholder="名称" value="<?php $this->remember('author'); ?>" required />
@@ -286,7 +291,7 @@
     };
 
 	$("#mail").on('blur',function(){
-    	url = "https://secure.gravatar.com/avatar/" + md5($(this).val()) + "?s=40&d="
+    	url = "<?php echo $gravatar_url; ?>" + md5($(this).val()) + "?s=40&d="
     	$("#author-head").css('background-image','url(' + url + ')'); 
     })
 
