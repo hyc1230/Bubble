@@ -258,6 +258,8 @@ function themeConfig($form) {
 	$form->addInput($body_html);
 	$gravatar_url = new Typecho_Widget_Helper_Form_Element_Text('gravatar_url', NULL, '', _t('Gravatar 镜像地址'), _t('自定义 Gravatar 加载头像的 URL，如 <code>https://gravatar.loli.net/avatar/</code>'));
 	$form->addInput($gravatar_url);
+	$busuanzi = new Typecho_Widget_Helper_Form_Element_Radio('busuanzi', array('0' => _t('关闭'), '1' => _t('开启')), '0', _t('不蒜子统计'), _t('开启后将使用<a href="https://busuanzi.ibruce.info/" target="_blank">不蒜子</a>服务，在页脚显示访问量统计'));
+	$form->addInput($busuanzi);
 }
 
 function printCategory($that, $icon = 0) { ?>

@@ -57,6 +57,13 @@
 					<div class="copyright">
 						<?php _e($this->options->footerText); ?>
 					</div>
+					<?php if ($this->options->busuanzi) { ?>
+						<div id="busuanzi_container" class="copyright">
+							<span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
+							<span id="busuanzi_container_site_uv"> / 访客数：<span id="busuanzi_value_site_uv"></span> 人次</span>
+							<span id="busuanzi_container_page_pv"> / 页面访问量：<span id="busuanzi_value_page_pv"></span> 次</span>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="col-md-6">
 					<ul class="nav nav-footer justify-content-end">
@@ -275,6 +282,10 @@
 		}
 		init()
 	</script>
+	<!-- Busuanzi JS-->
+	<?php if($this->options->busuanzi) { ?>
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<?php } ?>
 	<!-- Typecho footer -->
 	<?php $this->footer(); ?>
 	<?php echo $this->options->body_html; ?>
